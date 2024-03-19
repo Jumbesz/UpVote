@@ -20,6 +20,3 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
-    security:
-      user:
-        password: 43320c95-1aca-47f6-bbcf-19fa38f9b756

@@ -1,7 +1,8 @@
 package com.example.upvote.config;
 
 public enum ProfileRole {
-    ROLE_GUEST("GUEST"),
+
+
     ROLE_USER("USER"),
     ROLE_ADMIN("ADMIN");
 

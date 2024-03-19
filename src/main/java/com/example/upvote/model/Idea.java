@@ -1,14 +1,15 @@
 package com.example.upvote.model;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import javax.persistence.*;
+
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Idea {

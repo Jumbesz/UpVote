@@ -1,20 +1,21 @@
 package com.example.upvote.model;
 
 import com.example.upvote.config.ProfileRole;
-import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Profile {
 
     @Id
@@ -26,12 +27,12 @@ public class Profile {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private ProfileRole profileRole;
 
     @OneToMany
     @JoinColumn(name = "profile_id")
-    private List<Idea> ideas;
-
+    private List<Idea> ideas = new ArrayList<>();
 
 
 }

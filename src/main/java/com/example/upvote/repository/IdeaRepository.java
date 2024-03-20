@@ -13,7 +13,7 @@ public interface IdeaRepository extends JpaRepository<Idea, Long> {
 
     Optional<Idea> findById(Long id);
 
-    @Query("SELECT i FROM Idea i WHERE i.isApproved IS true")
+    @Query("SELECT i FROM Idea i WHERE i.isApproved = true ORDER BY i.rating DESC")
     List<Idea> findIdeaByIsApprovedTrue();
 
     @Query("SELECT i FROM Idea i WHERE i.isApproved IS false")

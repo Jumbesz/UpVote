@@ -1,44 +1,81 @@
 <div class="container">
-  <mat-card class="idea-card">
-    <mat-card-content class="card-content">
-      <div class="card-title">Pending Ideas</div>
-      <table mat-table [dataSource]="pendingIdeas" class="table">
 
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let idea">{{ idea.name }}</td>
-        </ng-container>
+  <div class="idea-card">
+    <mat-card>
+      <mat-card-content class="card-content">
+        <div class="card-title">Vote as you wish!</div>
+        <table mat-table [dataSource]="approvedIdeas" class="table">
 
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description</th>
-          <td mat-cell *matCellDef="let idea">{{ idea.description }}</td>
-        </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let idea">{{ idea.name }}</td>
+          </ng-container>
 
-        <!-- Add approve and disapprove buttons -->
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>Actions</th>
-          <td mat-cell *matCellDef="let idea">
-            <button mat-icon-button color="primary" (click)="approveIdea(idea.id)">
-              <mat-icon>thumb_up</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="disapproveIdea(idea.id)">
-              <mat-icon>thumb_down</mat-icon>
-            </button>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let idea">{{ idea.description }}</td>
+          </ng-container>
 
-        <!-- Footer for logout button -->
-        <ng-container matColumnDef="logout">
-          <td mat-footer-cell *matFooterCellDef colspan="3">
-            <button mat-button color="warn" class="logout-button" (click)="logout()">Logout</button>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef>Rating</th>
+            <td mat-cell *matCellDef="let idea">
+              {{ idea.rating }}
+            </td>
+          </ng-container>
 
-        <!-- Define column order -->
-        <tr mat-header-row *matHeaderRowDef="['name', 'description', 'actions']"></tr>
-        <tr mat-row *matRowDef="let idea; columns: ['name', 'description', 'actions']"></tr>
-      </table>
-      <button (click)="logout()" mat-raised-button color="warn" class="logout-button">Logout</button>
-    </mat-card-content>
-  </mat-card>
+          <ng-container matColumnDef="logout">
+            <td mat-footer-cell *matFooterCellDef colspan="3">
+              <button mat-button color="warn" class="logout-button">Logout</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['name', 'description', 'rating']"></tr>
+          <tr mat-row *matRowDef="let idea; columns: ['name', 'description', 'rating']"></tr>
+        </table>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="idea-card">
+    <mat-card>
+      <mat-card-content class="card-content">
+        <div class="card-title">Pending Ideas</div>
+        <table mat-table [dataSource]="pendingIdeas" class="table">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let idea">{{ idea.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let idea">{{ idea.description }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let idea">
+              <button mat-raised-button color="primary" (click)="approveIdea(idea.id)">
+                Approve
+              </button>
+              <button mat-raised-button color="warn" (click)="disapproveIdea(idea.id)">
+                Disapprove
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="logout">
+            <td mat-footer-cell *matFooterCellDef colspan="3">
+              <button mat-button color="warn" class="logout-button" (click)="logout()">Logout</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['name', 'description', 'actions']"></tr>
+          <tr mat-row *matRowDef="let idea; columns: ['name', 'description', 'actions']"></tr>
+        </table>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
+<button (click)="logout()" mat-raised-button color="warn" class="logout-button">Logout</button>

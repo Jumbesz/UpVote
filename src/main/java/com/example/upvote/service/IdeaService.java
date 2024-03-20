@@ -49,4 +49,10 @@ public class IdeaService {
         ideaRepository.save(idea);
         return idea;
     }
+
+    public String disapproveIdea(Long id) {
+        Idea idea = ideaRepository.findById(id).orElseThrow();
+        ideaRepository.delete(idea);
+        return idea + "has been deleted!";
+    }
 }

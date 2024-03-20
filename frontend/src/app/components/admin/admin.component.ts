@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IdeaService} from "../../services/idea.service";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
+import {IdeaModel} from "../../models/idea.model";
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  pendingIdeas: any;
+  pendingIdeas: IdeaModel[] = [];
+  approvedIdeas: IdeaModel[] = [];
 
 
   constructor(private ideaService: IdeaService,
@@ -18,14 +20,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ideaService.fetchPendingIdeas().subscribe(
-      (data) => {
-        this.pendingIdeas = data.pendingIdeas;
-      },
-      (error) => {
-        console.error("Error fetching approved ideas:", error);
-      }
-    );
+    this.fetchApprovedIdeas();
+    this.fetchPendingIdeas();
   }
 
 
@@ -35,11 +31,37 @@ export class AdminComponent implements OnInit {
   }
 
   approveIdea(id: number) {
+    this.ideaService.approveIdea(id).subscribe(() => {
+      this.fetchPendingIdeas();
+      this.fetchApprovedIdeas();
+    })
 
   }
 
   disapproveIdea(id: number) {
-
+    this.ideaService.disapproveIdea(id).subscribe(() =>
+      this.fetchPendingIdeas());
   }
 
+  fetchPendingIdeas(): void {
+    this.ideaService.fetchPendingIdeas().subscribe(
+      (data) => {
+        this.pendingIdeas = data.pendingIdeas;
+      },
+      (error) => {
+        console.error("Error fetching pending ideas:", error);
+      }
+    );
+  }
+
+  fetchApprovedIdeas() {
+    this.ideaService.fetchApprovedIdeas().subscribe((data) => {
+        this.approvedIdeas = data.approvedIdeas;
+      }, (error) => {
+        console.error("Error fetching pending ideas:", error);
+      }
+    );
+  }
 }
+
+

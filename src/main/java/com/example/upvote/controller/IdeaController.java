@@ -31,7 +31,7 @@ public class IdeaController {
 
     @PutMapping("/{id}/upvote")
     public ResponseEntity<String> upvoteIdea(@PathVariable Long id) {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(true);
         if (session != null && session.getAttribute("voted") != null) {
             return new ResponseEntity<>("You have already voted in this session", HttpStatus.BAD_REQUEST);
         }
@@ -41,13 +41,13 @@ public class IdeaController {
             session.setAttribute("voted", true);
             return new ResponseEntity<>("Thank you for your vote!", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Idea not found", HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping("/{id}/downvote")
     public ResponseEntity<String> downVoteIdea(@PathVariable Long id) {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(true);
         if (session != null && session.getAttribute("voted") != null) {
             return new ResponseEntity<>("You have already voted in this session", HttpStatus.BAD_REQUEST);
         }
@@ -57,9 +57,7 @@ public class IdeaController {
             session.setAttribute("voted", true);
             return new ResponseEntity<>("Thank you for your vote!", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Idea not found", HttpStatus.NOT_FOUND);
         }
     }
-
-
 }

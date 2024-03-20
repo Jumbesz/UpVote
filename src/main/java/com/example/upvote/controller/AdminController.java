@@ -23,6 +23,11 @@ public class AdminController {
         return new ResponseEntity<>(ideaService.approveIdea(id), HttpStatus.OK);
     }
 
+    @DeleteMapping("{id}/disapprove")
+    public ResponseEntity<String> disapproveIdea(@PathVariable Long id) {
+        return new ResponseEntity<>(ideaService.disapproveIdea(id), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<PendingIdeasResponse> getPendingIdeas() {
         if (ideaService.getPendingIdeas() != null) {

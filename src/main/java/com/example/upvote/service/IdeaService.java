@@ -1,18 +1,18 @@
 package com.example.upvote.service;
 
+import com.example.upvote.dto.outgoing.ApprovedIdeasResponse;
+import com.example.upvote.dto.outgoing.PendingIdeasResponse;
 import com.example.upvote.model.Idea;
 import com.example.upvote.repository.IdeaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional
 public class IdeaService {
 
-    private IdeaRepository ideaRepository;
+    private final IdeaRepository ideaRepository;
 
     @Autowired
     public IdeaService(IdeaRepository ideaRepository) {
@@ -28,12 +28,12 @@ public class IdeaService {
 
     }
 
-    public List<Idea> getPendingIdeas() {
-        return ideaRepository.findIdeaByIsApprovedFalse();
+    public PendingIdeasResponse getPendingIdeas() {
+        return new PendingIdeasResponse(ideaRepository.findIdeaByIsApprovedFalse());
     }
 
-    public List<Idea> getApprovedIdeas() {
-        return ideaRepository.findIdeaByIsApprovedTrue();
+    public ApprovedIdeasResponse getApprovedIdeas() {
+        return new ApprovedIdeasResponse(ideaRepository.findIdeaByIsApprovedTrue());
     }
 
     public Idea upvoteIdea(Long id) {

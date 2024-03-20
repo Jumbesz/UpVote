@@ -1,5 +1,6 @@
 package com.example.upvote.controller;
 
+import com.example.upvote.dto.outgoing.ApprovedIdeasResponse;
 import com.example.upvote.model.Idea;
 import com.example.upvote.service.IdeaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/idea")
 public class IdeaController {
 
-    private IdeaService ideaService;
-    private HttpServletRequest request;
+    private final IdeaService ideaService;
+    private final HttpServletRequest request;
 
     @Autowired
     public IdeaController(IdeaService ideaService, HttpServletRequest request) {
@@ -25,7 +25,7 @@ public class IdeaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Idea>> getApprovedIdeas() {
+    public ResponseEntity<ApprovedIdeasResponse> getApprovedIdeas() {
         return new ResponseEntity<>(ideaService.getApprovedIdeas(), HttpStatus.OK);
     }
 

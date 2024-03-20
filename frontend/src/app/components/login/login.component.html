@@ -1,4 +1,23 @@
 <div class="container">
-  <h2>Login to submit vote on ideas!</h2>
-  <a mat-button color="primary" routerLink="/profile">Login</a>
+  <div class="login-window">
+    <h3>Login to submit vote on ideas!</h3>
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class="input-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter your username" formControlName="username">
+        </mat-form-field>
+      </div>
+      <div class="input-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Enter your password" formControlName="password">
+        </mat-form-field>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="warn" routerLink="/home">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>

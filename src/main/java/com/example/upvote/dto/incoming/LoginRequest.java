@@ -3,7 +3,7 @@ package com.example.upvote.dto.incoming;
 import lombok.Data;
 
 @Data
-public class LoginData {
+public class LoginRequest {
 
     private String username;
     private String password;

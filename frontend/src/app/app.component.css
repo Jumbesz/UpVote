@@ -3,5 +3,58 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  overflow: hidden;
+}
+
+/* Common styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative; /* Ensure consistent positioning */
+}
+
+.brandname-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Specific component styles */
+.home-window,
+.login-window,
+.register-window {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Navbar styling */
+.mat-toolbar {
+  background-color: #1976d2; /* Adjust color as needed */
+}
+
+.brandname {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white; /* Adjust color as needed */
 }

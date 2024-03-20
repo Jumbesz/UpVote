@@ -3,7 +3,7 @@ package com.example.upvote.dto.incoming;
 import lombok.Data;
 
 @Data
-public class IdeaCreationData {
+public class IdeaCreationRequest {
 
     private String name;
     private String description;

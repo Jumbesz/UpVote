@@ -1,13 +1,11 @@
 package com.example.upvote.controller;
 
-import com.example.upvote.model.Idea;
+import com.example.upvote.dto.outgoing.PendingIdeasResponse;
 import com.example.upvote.service.IdeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -26,7 +24,7 @@ public class AdminController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Idea>> getPendingIdeas() {
+    public ResponseEntity<PendingIdeasResponse> getPendingIdeas() {
         if (ideaService.getPendingIdeas() != null) {
             return new ResponseEntity<>(ideaService.getPendingIdeas(), HttpStatus.OK);
         }

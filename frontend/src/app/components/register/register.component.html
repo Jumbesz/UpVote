@@ -1,4 +1,39 @@
 <div class="container">
-  <h2>Register to submit vote on ideas!</h2>
-  <a mat-button color="warn" routerLink="/home">Register</a>
+  <div class="register-window">
+    <h2 class="title">Register to submit vote on ideas!</h2>
+    <form (ngSubmit)="register()" [formGroup]="registrationForm">
+      <div class="input-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input formControlName="username" matInput placeholder="Enter your username">
+          <mat-error *ngIf="registrationForm.get('username')?.hasError('usernameTaken')">
+            Username is already taken.
+          </mat-error>
+          <mat-error
+            *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.hasError('required')">
+            Please enter your Username!
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="input-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput type="password" placeholder="Enter your password">
+        </mat-form-field>
+      </div>
+      <div class="input-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input formControlName="confirmPassword" matInput type="password" placeholder="Confirm your password">
+        </mat-form-field>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button color="primary">Register</button>
+        <button mat-raised-button color="warn" routerLink="/home">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
+

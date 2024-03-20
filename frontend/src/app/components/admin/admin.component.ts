@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {IdeaService} from "../../services/idea.service";
-import {IdeaModel} from "../../models/idea.model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class ProfileComponent implements OnInit {
-  approvedIdeas: IdeaModel[] = [];
+export class AdminComponent implements OnInit {
+  pendingIdeas: any;
+
 
   constructor(private ideaService: IdeaService,
               private authService: AuthenticationService,
@@ -18,9 +18,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ideaService.fetchApprovedIdeas().subscribe(
+    this.ideaService.fetchPendingIdeas().subscribe(
       (data) => {
-        this.approvedIdeas = data.approvedIdeas;
+        this.pendingIdeas = data.pendingIdeas;
       },
       (error) => {
         console.error("Error fetching approved ideas:", error);
@@ -28,8 +28,18 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+
   logout() {
     this.authService.logout();
     this.router.navigate(['home'])
   }
+
+  approveIdea(id: number) {
+
+  }
+
+  disapproveIdea(id: number) {
+
+  }
+
 }

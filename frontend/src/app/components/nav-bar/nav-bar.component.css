@@ -1,11 +1,14 @@
-.brandname {
-  font-size: 1.5rem;
-  font-weight: bold;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative; /* Ensure consistent positioning */
 }
 
 .brandname-container {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 100%;
 }

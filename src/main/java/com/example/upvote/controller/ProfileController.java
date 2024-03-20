@@ -1,6 +1,6 @@
 package com.example.upvote.controller;
 
-import com.example.upvote.dto.incoming.IdeaCreationData;
+import com.example.upvote.dto.incoming.IdeaCreationRequest;
 import com.example.upvote.model.Idea;
 import com.example.upvote.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/profile")
 public class ProfileController {
 
-    private ProfileService profileService;
+    private final ProfileService profileService;
 
     @Autowired
     public ProfileController(ProfileService profileService) {
@@ -23,8 +23,8 @@ public class ProfileController {
     }
 
     @PostMapping("/create-idea")
-    public ResponseEntity<Idea> createIdea(@RequestBody IdeaCreationData ideaCreationData) {
+    public ResponseEntity<Idea> createIdea(@RequestBody IdeaCreationRequest ideaCreationData) {
         return new ResponseEntity<>(profileService.createIdea(ideaCreationData), HttpStatus.CREATED);
     }
-    
+
 }

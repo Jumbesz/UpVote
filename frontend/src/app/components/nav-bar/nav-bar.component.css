@@ -1,0 +1,11 @@
+.brandname {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.brandname-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}

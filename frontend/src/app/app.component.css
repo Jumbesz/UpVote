@@ -5,13 +5,12 @@
   min-height: 100vh;
 }
 
-/* Common styles */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: relative; /* Ensure consistent positioning */
+  position: relative;
 }
 
 .brandname-container {
@@ -21,7 +20,6 @@
   width: 100%;
 }
 
-/* Specific component styles */
 .home-window,
 .login-window,
 .register-window {
@@ -48,13 +46,13 @@
   margin-top: 24px;
 }
 
-/* Navbar styling */
+
 .mat-toolbar {
-  background-color: #1976d2; /* Adjust color as needed */
+  background-color: #1976d2;
 }
 
 .brandname {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white; /* Adjust color as needed */
+  color: white;
 }

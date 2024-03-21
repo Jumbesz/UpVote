@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
 
   }
 
-
   confirmPasswordValidator(formGroup: FormGroup) {
     const passwordControl = formGroup.get('password');
     const confirmPasswordControl = formGroup.get('confirmPassword');

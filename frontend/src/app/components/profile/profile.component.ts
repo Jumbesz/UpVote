@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   approvedIdeas: IdeaModel[] = [];
   ideaForm!: FormGroup;
 
+
   constructor(private ideaService: IdeaService,
               private formBuilder: FormBuilder,
               private authService: AuthenticationService,
@@ -44,10 +45,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['home'])
   }
 
-  voteUp(id: number): void {
-    this.ideaService.upVoteIdea(id).subscribe(
+  voteUp(idea: IdeaModel): void {
+    this.ideaService.upVoteIdea(idea.id).subscribe(
       () => {
-        this.fetchApprovedIdeas();
+        idea.hasVoted = true;
       },
       (error) => {
         console.error("Error upvoting idea:", error);
@@ -55,10 +56,10 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  voteDown(id: number): void {
-    this.ideaService.downVoteIdea(id).subscribe(
+  voteDown(idea: IdeaModel): void {
+    this.ideaService.downVoteIdea(idea.id).subscribe(
       () => {
-        this.fetchApprovedIdeas();
+        idea.hasVoted = true;
       },
       (error) => {
         console.error("Error downvoting idea:", error);
@@ -72,5 +73,6 @@ export class ProfileComponent implements OnInit {
       this.ideaForm?.reset();
     })
   }
+
 }
 

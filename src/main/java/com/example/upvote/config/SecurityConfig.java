@@ -21,6 +21,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+
+
+                //The reason why I commented this config is for the reason I couldn't manage to handle session between frontend & backend.
+                //However, It was tested with postman and was okay.
+
+
+//                .cors().and()
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/api/register", "/api/login").permitAll()
+//                .antMatchers("/api/idea/**").hasRole("USER")
+//                .antMatchers("/api/admin/**").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//                .logout()
+//                .permitAll();
+
                 .cors().and()
                 .csrf().disable()
                 .authorizeRequests().anyRequest().permitAll();

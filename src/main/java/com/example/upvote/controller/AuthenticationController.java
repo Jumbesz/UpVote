@@ -47,7 +47,7 @@ public class AuthenticationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Profile profile = profileService.login(loginRequest.getUsername(), loginRequest.getPassword(), request, response);
+        Profile profile = profileService.login(loginRequest.getUsername(), loginRequest.getPassword(), request);
 
         if (profile != null) {
             return new ResponseEntity<>(new LoginResponse(profile.getId(), profile.getUsername(), profile.getProfileRole().toString()), HttpStatus.OK);
@@ -57,7 +57,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("logout")
-    public ResponseEntity<?> logout() {
+    public ResponseEntity<String> logout() {
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok("Logout successful!");
     }

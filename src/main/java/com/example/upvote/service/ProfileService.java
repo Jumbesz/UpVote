@@ -68,7 +68,7 @@ public class ProfileService implements UserDetailsService {
     }
 
 
-    public Profile login(String username, String password, HttpServletRequest request, HttpServletResponse response) {
+    public Profile login(String username, String password, HttpServletRequest request) {
         UserDetails userDetails = loadUserByUsername(username);
         if (userDetails != null && passwordEncoder.matches(password, userDetails.getPassword())) {
             Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

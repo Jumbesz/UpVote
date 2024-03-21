@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/admin")
 public class AdminController {
 
-    private IdeaService ideaService;
+    private final IdeaService ideaService;
 
     @Autowired
     public AdminController(IdeaService ideaService) {

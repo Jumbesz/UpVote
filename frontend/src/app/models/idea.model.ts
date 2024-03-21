@@ -4,4 +4,5 @@ export interface IdeaModel {
   description: string,
   rating: number,
   isApproved: boolean
+  hasVoted?: boolean;
 }

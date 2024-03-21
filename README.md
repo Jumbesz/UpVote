@@ -8,15 +8,14 @@ Before you begin, ensure you have met the following requirements:
 - Apache Maven installed.
 - PostgreSQL installed and running on port 5433.
 - Make sure to run PostgreSQL inside a Docker container before testing. You can find instructions on setting up
-  PostgreSQL in a Docker container [here](link-to-docker-postgresql-setup) (provide a link to relevant resources or
-  guides).
+  PostgreSQL in a Docker container [here](link-to-docker-postgresql-setup).
 - @angular/cli version 16 installed.
 
 ### Installation
 
 1. Clone the repository:
 
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/Jumbesz/UpVote.git
 
 2. Navigate to the /frontend directory:
    cd UpVote/frontend
